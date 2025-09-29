@@ -1,69 +1,152 @@
-/* styles.css */
+/* ===============================
+   Global Styles & Variables
+================================ */
+:root {
+    --primary-color: #38ef7d;
+    --primary-dark: #11998e;
+    --secondary-color: #43c6ac;
+    --background-gradient: linear-gradient(to right, #f8ffae, #43c6ac);
+    --header-gradient: linear-gradient(to right, #11998e, #38ef7d);
+    --text-color: #333;
+    --white: #fff;
+    --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    --radius: 12px;
+    --transition: all 0.3s ease-in-out;
+    --font-main: 'Poppins', sans-serif;
+}
+
+/* ===============================
+   Reset & Base
+================================ */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-main);
 }
 
 body {
-    background: linear-gradient(to right, #f8ffae, #43c6ac);
-    color: #333;
-    transition: all 0.3s ease-in-out;
+    background: var(--background-gradient);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: var(--transition);
 }
 
+/* ===============================
+   Layout Containers
+================================ */
 .container {
     max-width: 1200px;
     margin: auto;
     padding: 20px;
 }
 
+/* ===============================
+   Header & Navigation
+================================ */
 header {
-    background: linear-gradient(to right, #11998e, #38ef7d);
-    color: white;
+    background: var(--header-gradient);
+    color: var(--white);
     text-align: center;
-    padding: 20px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 25px 20px;
+    box-shadow: var(--shadow);
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
     animation: fadeIn 1s ease-in-out;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
 }
 
 header nav ul {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
     list-style: none;
+    flex-wrap: wrap;
+}
+
+header nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+header nav ul li a:hover {
+    color: #f8ffae;
+}
+
+/* ===============================
+   Product Cards
+================================ */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
 }
 
 .product {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
+    background: var(--white);
+    padding: 25px;
+    border-radius: var(--radius);
     text-align: center;
-    transition: transform 0.3s ease-in-out;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
     cursor: pointer;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+    max-width: 100%;
+    border-radius: var(--radius);
+    margin-bottom: 15px;
+    transition: var(--transition);
+}
+
+.product h3 {
+    font-size: 1.3rem;
+    margin: 10px 0;
+    color: var(--primary-dark);
+}
+
+.product p {
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    color: #555;
 }
 
 .product:hover {
+    transform: translateY(-8px) scale(1.03);
+}
+
+.product:hover img {
     transform: scale(1.05);
 }
 
+/* ===============================
+   Buttons
+================================ */
 button {
-    background: #38ef7d;
-    color: white;
-    padding: 10px;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 12px 20px;
     border: none;
+    border-radius: 8px;
     cursor: pointer;
-    transition: 0.3s;
-    border-radius: 5px;
+    font-weight: 500;
+    transition: var(--transition);
 }
 
 button:hover {
-    background: #30c270;
-    transform: scale(1.1);
+    background: var(--primary-dark);
+    transform: scale(1.05);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
 }
